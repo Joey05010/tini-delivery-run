@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1d2433;
+  color: #e8ecf3;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  touch-action: manipulation;
+}
+
+main {
+  width: 100%;
+  max-width: 932px;
+  padding: 16px;
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+}
+
+/* The height is set by the game script so the canvas fits the screen */
+#game {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  background: #bfe3f5;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.version {
+  margin-left: 6px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #2a3347;
+  color: #aab4c5;
+  font-size: 0.75rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+/* On-screen buttons: hidden where there is a keyboard and plenty of room */
+.controls {
+  display: none;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.control {
+  flex: 1;
+  height: 76px;
+  border: 0;
+  border-radius: 14px;
+  background: #3b82f6;
+  color: #ffffff;
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control:active {
+  background: #2a62c4;
+  transform: scale(0.97);
+}
+
+.switch {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+}
+
+.switch a {
+  color: #7fb6ff;
+}
+
+.help {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #aab4c5;
+}
+
+kbd {
+  padding: 1px 6px;
+  border: 1px solid #4a556b;
+  border-radius: 4px;
+  background: #2a3347;
+  color: #e8ecf3;
+  font-family: inherit;
+  font-size: 0.85em;
+}
+
+/* Phones and tablets */
+@media (hover: none), (max-width: 900px) {
+  .controls {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.15rem;
+  }
+
+  .help {
+    font-size: 0.8rem;
+  }
+}
+
+/* Phone held sideways: the game fills the screen and the buttons sit on top of it */
+@media (orientation: landscape) and (max-height: 520px) {
+  main {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  h1,
+  .help,
+  .switch {
+    display: none;
+  }
+
+  .controls {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 12px max(16px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  .controls.single {
+    justify-content: flex-end;
+  }
+
+  .control {
+    flex: 0 0 110px;
+    height: 72px;
+    opacity: 0.8;
+    pointer-events: auto;
+  }
+}

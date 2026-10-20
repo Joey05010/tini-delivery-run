@@ -1,0 +1,4 @@
+.claude/
+share/
+dist/
+__pycache__/
